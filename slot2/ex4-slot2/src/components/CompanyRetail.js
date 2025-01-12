@@ -1,7 +1,7 @@
 const CompanyRetail = ({ companies }) => {
     return (
         <div>
-            <h1>Company Category Retail</h1>
+            <h2>Company Category Retail</h2>
             {
                 companies.filter(({ category }) => category === "Retail")
                     .map(company => (
