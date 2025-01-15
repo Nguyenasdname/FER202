@@ -5,7 +5,8 @@ const FirstIsTeenager = ({people}) => {
         <div>
             <h2>First Is Teenager</h2>
             <ul>
-                <li>{teenager.name}</li>
+                <li>{teenager.name} - {teenager.age}</li>
+            
             </ul>
         </div>
     )

@@ -14,7 +14,10 @@ const HelloReact = () => {
     
     }
     return(
-        <div style={styleDiv}>
+        <div style={{
+            display: "flex",
+            
+        }}>
             <p>Hello </p>
             <p style={styleSpan}>React</p>
         </div>
