@@ -67,7 +67,7 @@ const MenuItem = ({ img, title, price, salePrice, infor }) => {
                 <a href="#" className="btn btn-dark">Buy</a>
             </div>
             <div className="new bg-warning text-center ps-3 pe-3">
-                <strong>{infor}</strong>
+                <strong className="text-time-new-roman">{infor}</strong>
             </div>
         </div>
     );
@@ -116,8 +116,8 @@ const BookingForm = () => {
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col mb-5 ">
-                    <a href="#" class="d-flex align-items-center justify-content-left btn btn-warning text-white fs-4 fw-bold text-time-new-roman mb-5  ">Send Message</a>
+                <div class="d-flex align-items-center justify-content-left col mb-5 ">
+                    <a href="#" class=" btn btn-warning text-white fs-4 fw-bold text-time-new-roman mb-5 ">Send Message</a>
                 </div>
             </div>
         </div>
