@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./css/index.css";
 const Navbar = () => {
     return (
@@ -27,26 +28,81 @@ const Navbar = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-const Banner = () => {
+const Carousel = () => {
     return (
-        <div class="container-s">
-            <div class="row banner align-items-center justify-content-center">
-                <div class="background-img ">
-                    <img src="images/pizza.jpg" class="back-img" alt=""></img>
-                </div>
+        <div id="customCarousel" className="carousel slide" data-bs-ride="carousel">
 
-                <div class="banner-content">
-                    <div class="text-white fs-1 fw-bold text-time-new-roman">Neapolian Pizza</div>
-                    <div class="text-white fs-5 text-time-new-roman">If you are looking for a traditional Italian pizza,
-                        the Neapolian is the best option</div>
-                </div>
+            <div className="carousel-indicators">
+                <button
+                    type="button"
+                    data-bs-target="#customCarousel"
+                    data-bs-slide-to="0"
+                    className="active"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                ></button>
+                <button
+                    type="button"
+                    data-bs-target="#customCarousel"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                ></button>
+                <button
+                    type="button"
+                    data-bs-target="#customCarousel"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                ></button>
             </div>
+
+
+            <div className="carousel-inner main-banner">
+                <div className="carousel-item active">
+                    <div className="d-block w-100 bg-cccccc item-slide">
+                        <img src="images/pizza.jpg" className="" />
+                    </div>
+                </div>
+                <div className="carousel-item">
+                    <div className="d-block w-100 bg-cccccc item-slide">
+                        <img src="images/pizza.jpg" className="" />
+                    </div>
+                </div>
+                <div className="carousel-item">
+                    <div className="d-block w-100 bg-cccccc item-slide">
+                        <img src="images/pizza.jpg" className="" />
+                    </div>
+                </div>
+                <h1 className="text-white text-time-new-roman banner-content">
+                    <div className="fs-1">Neapolitan Pizza</div>
+                    <div className="fs-5 mt-2">If you are looking for a traditional Italian pizza, the Neapolitan is best option</div>
+                </h1>
+            </div>
+
+
+            <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#customCarousel"
+                data-bs-slide="prev"
+            >
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Previous</span>
+            </button>
+            <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#customCarousel"
+                data-bs-slide="next"
+            >
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Next</span>
+            </button>
         </div>
-    );
-};
+    )
+}
 
 const MenuItem = ({ img, title, price, salePrice, infor }) => {
     return (
@@ -55,7 +111,7 @@ const MenuItem = ({ img, title, price, salePrice, infor }) => {
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">
-                {salePrice !== null ? (
+                    {salePrice !== null ? (
                         <div>
                             <span className="text-decoration-line-through">${price}</span>
                             <span className="text-warning ms-2">${salePrice}</span>
@@ -70,8 +126,8 @@ const MenuItem = ({ img, title, price, salePrice, infor }) => {
                 <strong className="text-time-new-roman">{infor}</strong>
             </div>
         </div>
-    );
-};
+    )
+}
 
 const Menu = () => {
     const menuItems = [
@@ -79,7 +135,7 @@ const Menu = () => {
         { img: "images/pizza2.jpg", title: "Pepperoni Pizza", price: "45.00", salePrice: null, infor: null },
         { img: "images/pizza3.jpg", title: "Veggie Pizza", price: "38.00", salePrice: null, infor: "New" },
         { img: "images/pizza4.jpg", title: "BBQ Chicken Pizza", price: "50.00", salePrice: "35.00", infor: "Sale" },
-    ];
+    ]
     return (
         <div className="container bg-dark text-white py-5">
             <h2 className="row ms-3 ps-4">Our Menu</h2>
@@ -89,8 +145,8 @@ const Menu = () => {
                 ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
 const BookingForm = () => {
     return (
@@ -99,7 +155,7 @@ const BookingForm = () => {
             <div className="row mb-3">
                 <div className="col-4">
                     <input type="text" className="form-control" placeholder="Your Name*" />
-                    </div>
+                </div>
                 <div className="col-4"><input type="text" className="form-control" placeholder="Your Email*" /></div>
                 <div className="col-4">
                     <select className="form-select">
@@ -121,18 +177,17 @@ const BookingForm = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
 const PizzaWeb = () => {
     return (
         <div className="bg-dark">
             <Navbar />
-            <Banner />
+            <Carousel />
             <Menu />
             <BookingForm />
         </div>
-    );
-};
-
+    )
+}
 export default PizzaWeb;
