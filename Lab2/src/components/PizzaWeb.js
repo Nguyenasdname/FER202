@@ -1,133 +1,69 @@
 import React from "react";
+import { Navbar, Nav, Container, Form, Button } from "react-bootstrap";
+import { Carousel, Card, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./css/index.css";
-const Navbar = () => {
+
+const CustomNavbar = () => {
     return (
-        <div className="bg-dark">
-            <div className="container-s bg-dark nav-bar">
-                <div className="row">
-                    <div className="col-md-8">
-                        <div className="d-flex">
-                            <div className="logo py-3">
-                                <a href="#" className="text-decoration-none text-white fs-2 fw-bold ms-5">Pizza House</a>
-                            </div>
-                            <div className="items align-items-center justify-content-center mt-4 pt-2 ps-5">
-                                <a href="#" className="text-decoration-none text-white pe-5 fw-bold">Home</a>
-                                <a href="#" className="text-decoration-none text-white pe-5">About Us</a>
-                                <a href="#" className="text-decoration-none text-white pe-5">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3">
-                        <div className="d-flex ps-5">
-                            <input type="text" className="form-control mt-4" placeholder="Search" />
-                            <img src="images\search_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" className="search-icon bg-danger rounded-1 mt-4 ms-1" alt="search" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+        <Navbar bg="dark" variant="dark" expand="lg">
+            <Container>
+                <Navbar.Brand href="#">Pizza House</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ms-auto">
+                        <Nav.Link href="#">Home</Nav.Link>
+                        <Nav.Link href="#">About Us</Nav.Link>
+                        <Nav.Link href="#">Contact</Nav.Link>
+                    </Nav>
+                    <Form className="d-flex ms-3">
+                        <Form.Control type="text" placeholder="Search" className="me-2" />
+                        <Button variant="danger">🔍</Button>
+                    </Form>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
+};
 
-const Carousel = () => {
+const CustomCarousel = () => {
     return (
-        <div id="customCarousel" className="carousel slide" data-bs-ride="carousel">
-
-            <div className="carousel-indicators">
-                <button
-                    type="button"
-                    data-bs-target="#customCarousel"
-                    data-bs-slide-to="0"
-                    className="active"
-                    aria-current="true"
-                    aria-label="Slide 1"
-                ></button>
-                <button
-                    type="button"
-                    data-bs-target="#customCarousel"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"
-                ></button>
-                <button
-                    type="button"
-                    data-bs-target="#customCarousel"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"
-                ></button>
-            </div>
-
-
-            <div className="carousel-inner main-banner">
-                <div className="carousel-item active">
-                    <div className="d-block w-100 bg-cccccc item-slide">
-                        <img src="images/pizza.jpg" className="" />
-                    </div>
-                </div>
-                <div className="carousel-item">
-                    <div className="d-block w-100 bg-cccccc item-slide">
-                        <img src="images/pizza.jpg" className="" />
-                    </div>
-                </div>
-                <div className="carousel-item">
-                    <div className="d-block w-100 bg-cccccc item-slide">
-                        <img src="images/pizza.jpg" className="" />
-                    </div>
-                </div>
-                <h1 className="text-white text-time-new-roman banner-content">
-                    <div className="fs-1">Neapolitan Pizza</div>
-                    <div className="fs-5 mt-2">If you are looking for a traditional Italian pizza, the Neapolitan is best option</div>
-                </h1>
-            </div>
-
-
-            <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#customCarousel"
-                data-bs-slide="prev"
-            >
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#customCarousel"
-                data-bs-slide="next"
-            >
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-            </button>
-        </div>
-    )
-}
+        <Carousel>
+            {[1, 2, 3].map((_, index) => (
+                <Carousel.Item key={index}>
+                    <img className="d-block w-100" src="images/pizza.jpg" alt="Pizza" />
+                    <Carousel.Caption>
+                        <h3>Neapolitan Pizza</h3>
+                        <p>If you are looking for a traditional Italian pizza, the Neapolitan is the best option.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            ))}
+        </Carousel>
+    );
+};
 
 const MenuItem = ({ img, title, price, salePrice, infor }) => {
     return (
-        <div className="card me-3 item" style={{ width: "18rem" }}>
-            <img src={img} className="card-img-top item-img" alt={title} />
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">
-                    {salePrice !== null ? (
-                        <div>
+        <Card style={{ width: "18rem" }} className="me-3">
+            <Card.Img variant="top" className="item-img" src={img} />
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>
+                    {salePrice ? (
+                        <>
                             <span className="text-decoration-line-through">${price}</span>
                             <span className="text-warning ms-2">${salePrice}</span>
-                        </div>
+                        </>
                     ) : (
                         <span>${price}</span>
                     )}
-                </p>
-                <a href="#" className="btn btn-dark">Buy</a>
-            </div>
-            <div className="new bg-warning text-center ps-3 pe-3">
-                <strong className="text-time-new-roman">{infor}</strong>
-            </div>
-        </div>
-    )
-}
+                </Card.Text>
+                <Button variant="dark">Buy</Button>
+            </Card.Body>
+            {infor && <div className="bg-warning text-center p-2 new"><strong>{infor}</strong></div>}
+        </Card>
+    );
+};
 
 const Menu = () => {
     const menuItems = [
@@ -135,59 +71,58 @@ const Menu = () => {
         { img: "images/pizza2.jpg", title: "Pepperoni Pizza", price: "45.00", salePrice: null, infor: null },
         { img: "images/pizza3.jpg", title: "Veggie Pizza", price: "38.00", salePrice: null, infor: "New" },
         { img: "images/pizza4.jpg", title: "BBQ Chicken Pizza", price: "50.00", salePrice: "35.00", infor: "Sale" },
-    ]
+    ];
     return (
-        <div className="container bg-dark text-white py-5">
-            <h2 className="row ms-3 ps-4">Our Menu</h2>
-            <div className="row justify-content-center">
+        <Container className="text-white py-5">
+            <h2 className="mb-4">Our Menu</h2>
+            <Row className="justify-content-center">
                 {menuItems.map((item, index) => (
-                    <MenuItem key={index} {...item} />
+                    <Col key={index} md={4} lg={3} className="mb-4">
+                        <MenuItem {...item} />
+                    </Col>
                 ))}
-            </div>
-        </div>
-    )
-}
+            </Row>
+        </Container>
+    );
+};
 
 const BookingForm = () => {
     return (
-        <div className="container text-white py-5">
+        <Container className="text-white py-5">
             <h1 className="text-center">Book Your Table</h1>
-            <div className="row mb-3">
-                <div className="col-4">
-                    <input type="text" className="form-control" placeholder="Your Name*" />
-                </div>
-                <div className="col-4"><input type="text" className="form-control" placeholder="Your Email*" /></div>
-                <div className="col-4">
-                    <select className="form-select">
-                        <option value="" disabled selected>Select a Service</option>
-                        <option value="1">Service 1</option>
-                        <option value="2">Service 2</option>
-                        <option value="3">Service 3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mt-5 mb-3">
-                <div class="col">
-                    <textarea class="form-control" rows="8" placeholder="Please write your comment"></textarea>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="d-flex align-items-center justify-content-left col mb-5 ">
-                    <a href="#" class=" btn btn-warning text-white fs-4 fw-bold text-time-new-roman mb-5 ">Send Message</a>
-                </div>
-            </div>
-        </div>
-    )
-}
+            <Row className="mb-3">
+                <Col md={4}><Form.Control type="text" placeholder="Your Name*" /></Col>
+                <Col md={4}><Form.Control type="email" placeholder="Your Email*" /></Col>
+                <Col md={4}>
+                    <Form.Select>
+                        <option disabled selected>Select a Service</option>
+                        <option>Service 1</option>
+                        <option>Service 2</option>
+                        <option>Service 3</option>
+                    </Form.Select>
+                </Col>
+            </Row>
+            <Row className="mt-4 mb-3">
+                <Col><Form.Control as="textarea" rows={5} placeholder="Please write your comment" /></Col>
+            </Row>
+            <Row>
+                <Col className="text-center">
+                    <Button variant="warning" className="fs-4 fw-bold">Send Message</Button>
+                </Col>
+            </Row>
+        </Container>
+    );
+};
 
 const PizzaWeb = () => {
     return (
         <div className="bg-dark">
-            <Navbar />
-            <Carousel />
+            <CustomNavbar />
+            <CustomCarousel />
             <Menu />
             <BookingForm />
         </div>
-    )
-}
+    );
+};
+
 export default PizzaWeb;
