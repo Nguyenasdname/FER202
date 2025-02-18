@@ -67,6 +67,12 @@
     left: 0%;
 }
 
+.menu-card{
+    overflow: hidden;
+    transition: 0.3 ease;
+}
+
+
 .main-banner {
     position: relative;
 }
@@ -77,3 +83,4 @@
     left: 50%;
     transform: translate(-50%, 50%);
 }
+

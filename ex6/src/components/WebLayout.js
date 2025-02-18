@@ -75,7 +75,6 @@ const Carousel = () => {
                 <h1 className="text-969696 banner-content">1920 x 530</h1>
             </div>
 
-           
             <button
                 className="carousel-control-prev"
                 type="button"

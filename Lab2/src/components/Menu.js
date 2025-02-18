@@ -5,11 +5,11 @@ import "./css/index.css";
 
 const MenuItem = ({ img, title, price, salePrice, infor }) => {
     return (
-        <Card style={{ width: "18rem" }} className="me-3">
+        <Card className="me-3 menu-card">
             <Card.Img variant="top" className="item-img" src={img} />
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>
+            <Card.Body className=""> 
+                <Card.Title className="d-flex justify-content-left">{title}</Card.Title>
+                <Card.Text className="d-flex justify-content-left">
                     {salePrice ? (
                         <>
                             <span className="text-decoration-line-through">${price}</span>
@@ -35,7 +35,7 @@ const Menu = () => {
     ];
     return (
         <Container className="text-white py-5 bg-dark">
-            <h2 className="mb-4">Our Menu</h2>
+            <h2 className="mb-4 d-flex justify-content-left">Our Menu</h2>
             <Row className="justify-content-center">
                 {menuItems.map((item, index) => (
                     <Col key={index} md={4} lg={3} className="mb-4">

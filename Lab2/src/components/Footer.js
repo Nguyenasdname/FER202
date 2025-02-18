@@ -19,6 +19,7 @@ const Footer = () => {
                     </Form.Select>
                 </Col>
             </Row>
+            
             <Row className="mt-4 mb-3">
                 <Col><Form.Control as="textarea" rows={7} placeholder="Please write your comment" /></Col>
             </Row>
@@ -28,6 +29,7 @@ const Footer = () => {
                 </Col>
             </Row>
         </Container>
+        
     );
 };
 
