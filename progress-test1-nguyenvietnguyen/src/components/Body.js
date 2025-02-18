@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/index.css";
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+
 
 const CardInfor = ({ student }) => {
     return (
@@ -12,23 +13,32 @@ const CardInfor = ({ student }) => {
                     <div>{student.name}</div>
                     <div>{student.location}</div>
                 </div>
-                <div className="mb-3 mt-1 check-attendant d-flex justify-content-center align-items-center">
-                    <div className="present pe-5 me-5">
-                        <input className={student.name + "present"} name="Radio" type="radio" id={student.name + "present"} />
-                        <label htmlFor={student.name + "present"}>Present</label>
+                <Form>
+                    <div className="mb-3 mt-1 check-attendant d-flex justify-content-center align-items-center">
+                        <Form.Check
+                            type="radio"
+                            id={student.name + "present"}
+                            name={"attendance-" + student.mssv}
+                            label="Present"
+                            className="pe-5 me-5"
+                        />
+                        <Form.Check
+                            type="radio"
+                            id={student.name + "absent"}
+                            name={"attendance-" + student.mssv}
+                            label="Absent"
+                            className="ps-5 ms-5"
+                        />
                     </div>
-                    <div className="absent ps-5 ms-5">
-                        <input className={student.name + "absent"} name="Radio" type="radio" id={student.name + "absent"} />
-                        <label htmlFor={student.name + "absent"}>Absent</label>
+                    <div className="submit d-flex justify-content-center align-items-center">
+                        <Button className="bg-orange text-white" type="submit">Submit</Button>
                     </div>
-                </div>
-                <div className="submit d-flex justify-content-center align-items-center">
-                    <Button className="bg-orange text-white" type="submit">Submit</Button>
-                </div>
+                </Form>
             </Card.Body>
         </Card>
     );
 };
+
 
 const Body = () => {
     const students = [
