@@ -9,8 +9,11 @@ function App() {
   return (
     <div className="">
       <Counter />
+      <br/>
       <TextBox />
+      <br/>
       <ProductList />
+      <br/>
       <SearchFilter />
     </div>
   );
